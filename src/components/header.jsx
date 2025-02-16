@@ -1,5 +1,7 @@
 // src/components/Header.js
 import { useNavigate } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import Logo from "./logo";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -12,9 +14,7 @@ export default function Header() {
     <>
       <header>
         <div className="container header">
-          <div className="logo">
-            <img className="main-logo" src="/assets/img/logox.png" alt="logo" />
-          </div>
+          <Logo />
           <nav className="navbar">
             <ul>
               <li>
@@ -36,11 +36,7 @@ export default function Header() {
           </nav>
           <div className="search-bar">
             <form className="search-form">
-              <input
-                type="search"
-                id="searchInput"
-                placeholder="Search by title..."
-              />
+              <SearchBar />
               <button
                 onClick={handleSearch()}
                 type="button"

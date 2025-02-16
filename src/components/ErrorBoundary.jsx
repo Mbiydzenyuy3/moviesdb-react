@@ -1,4 +1,3 @@
-// ErrorBoundary.js
 import { Component } from "react";
 import PropTypes from "prop-types";
 
@@ -16,10 +15,10 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="error-boundary">
+        <div className="error-fallback">
           <h2>Something went wrong</h2>
           <p>{this.state.error.message}</p>
-          <button onClick={() => window.location.reload()}>Retry</button>
+          <button onClick={() => window.location.reload()}>Try Again</button>
         </div>
       );
     }

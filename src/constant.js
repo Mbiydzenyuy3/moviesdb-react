@@ -9,14 +9,3 @@ export const API_URLS = {
   SIMILAR: (id) => `https://api.themoviedb.org/3/movie/${id}/similar`,
   CREDITS: (id) => `https://api.themoviedb.org/3/movie/${id}/credits`,
 };
-
-export const BRAND_LOGOS = [
-  "disney",
-  "netflix",
-  "hbo-max",
-  "pixar",
-  "marvel",
-  "starwars",
-  "national-geographic",
-  "youtube",
-];

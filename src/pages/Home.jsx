@@ -1,37 +1,29 @@
-// src/pages/HomePage.js
 import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../services/api-services";
-// import MoviesGrid from "../components/MoviesGrid";
-// import BrandSlider from "../components/Brandslider";
+import { useMovieContext } from "../context/movieContext";
+import HeroSection from "../components/HeroCard";
+// import BrandSlider from "../components/BrandSlider";
+import MovieSection from "../components/MoviesSection";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import HeroCard from "../components/HeroCard";
 
 export default function HomePage() {
-  // const dispatch = useDispatch();
-  // const { popular, topRated, nowPlaying } = useSelector(
-  //   (state) => state.movies
-  // );
+  const { fetchMovies, movies } = useMovieContext();
 
   useEffect(() => {
-    fetchMovies("POPULAR");
-    fetchMovies("TOP_RATED");
-    fetchMovies("NOW_PLAYING");
-  }, []);
+    fetchMovies("popular");
+    fetchMovies("top_rated");
+    fetchMovies("now_playing");
+  }, [fetchMovies]);
 
   return (
-    <>
+    <div className="home-page">
       <Header />
-      <div className="home-page">
-        <HeroCard/>
-        {/* <BrandSlider /> */}
-
-        {/* <MoviesGrid title="Popular Movies" movies={popular} />
-        <MoviesGrid title="Top Rated Movies" movies={topRated} />
-        <MoviesGrid title="Now Playing" movies={nowPlaying} /> */}
-      </div>
+      <HeroSection />
+      {/* <BrandSlider /> */}
+      <MovieSection title="Popular Movies" movies={movies.popular} />
+      <MovieSection title="Top Rated Movies" movies={movies.top_rated} />
+      <MovieSection title="Now Playing" movies={movies.now_playing} />
       <Footer />
-    </>
+    </div>
   );
 }

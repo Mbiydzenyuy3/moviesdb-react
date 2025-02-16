@@ -88,6 +88,7 @@ footer {
   display: flex;
   justify-content: space-between;
   gap: 64px;
+  margin-bottom: 60px;
 }
 
 .footer-heading {
@@ -164,4 +165,18 @@ ul.footer-ul {
 .footer-images-item {
   display: flex;
   flex-direction: column;
+}
+
+.footer-contact {
+  border-top: 1px solid #746b6b;
+  padding-block: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-contact-items {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }

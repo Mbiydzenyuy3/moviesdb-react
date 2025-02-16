@@ -1,3 +1,5 @@
+import Logo from "./logo";
+
 export default function Footer() {
   return (
     <>
@@ -57,7 +59,23 @@ export default function Footer() {
               </div>
             </div>
             <div className="footer-contact">
-              <div className="copyright"></div>
+              <div className="footer-contact-items">
+                <div className="copyright">
+                  <p>&copy; 2023 STREAM X. All Rights Reserved</p>
+                </div>
+                <div className="footer-terms">
+                  <p className="terms">Terms Of Use </p>
+                </div>
+                <div className="footer-policy">
+                  <p className="tpolicy"> Privacy Policy</p>
+                </div>
+                <div className="faq">
+                  <p className="faq"> FAQ</p>
+                </div>
+              </div>
+              <div className="footer-logo">
+                <Logo />
+              </div>
             </div>
           </div>
         </div>

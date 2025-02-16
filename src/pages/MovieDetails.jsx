@@ -1,137 +1,80 @@
-// src/pages/MovieDetailsPage/MovieDetailsPage.jsx
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
-import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { API_KEY } from "../constant";
-import MovieCard from "../components/MovieCard";
-import Footer from "../components/footer";
-import Header from "../components/header";
-
-export default function MovieDetailsPage() {
+// import { useMovieContext } from "../context/movieContext";
+import CastList from "../components/CastList";
+import SimilarMovies from "../components/SimilarMovies";
+import ErrorBoundary from "../components/ErrorBoundary";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+const MovieDetailsPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [movie, setMovie] = useState(null);
   const [cast, setCast] = useState([]);
-  const [similarMovies, setSimilarMovies] = useState([]);
+  const [similar, setSimilar] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {
+    const fetchData = async () => {
       try {
-        setLoading(true);
+        const [detailsRes, creditsRes, similarRes] = await Promise.all([
+          fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`),
+          fetch(
+            `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`
+          ),
+          fetch(
+            `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}`
+          ),
+        ]);
 
-        const detailsPromise = axios.get(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=credits,similar`
-        );
+        if (!detailsRes.ok) throw new Error("Movie not found");
 
-        const [detailsResponse] = await Promise.all([detailsPromise]);
+        const [details, credits, similar] = await Promise.all([
+          detailsRes.json(),
+          creditsRes.json(),
+          similarRes.json(),
+        ]);
 
-        const movieData = detailsResponse.data;
-        setMovie(movieData);
-        setCast(movieData.credits.cast.slice(0, 10));
-        setSimilarMovies(movieData.similar.results);
-
-        setLoading(false);
+        setMovie(details);
+        setCast(credits.cast.slice(0, 10));
+        setSimilar(similar.results);
       } catch (err) {
-        setError("Failed to load movie details");
+        setError(err.message);
+        navigate("/error", { state: { message: err.message } });
+      } finally {
         setLoading(false);
       }
     };
 
-    fetchMovieDetails();
-  }, [id]);
+    fetchData();
+  }, [id, navigate]);
 
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error">{error}</div>;
-  if (!movie) return <div className="error">Movie not found</div>;
+  if (error) return null; // Handled by error boundary
 
   return (
-    <>
-      <Header />
+    <ErrorBoundary>
       <div className="movie-details-page">
-        {/* Hero Section */}
-        <div className="hero-section">
-          <div
-            className="hero-backdrop"
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
-            }}
-          >
-            <div className="hero-content container">
-              <div className="poster-column">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  className="movie-poster"
-                />
-              </div>
-              <div className="info-column">
-                <h1 className="movie-title">{movie.title}</h1>
-                <div className="movie-meta">
-                  <span className="rating">
-                    ⭐ {movie.vote_average.toFixed(1)}
-                  </span>
-                  <span className="runtime">{movie.runtime} mins</span>
-                  <span className="release-date">{movie.release_date}</span>
-                </div>
-                <div className="genres">
-                  {movie.genres.map((genre) => (
-                    <span key={genre.id} className="genre-tag">
-                      {genre.name}
-                    </span>
-                  ))}
-                </div>
-                <p className="overview">{movie.overview}</p>
-              </div>
+        {loading ? (
+          <Skeleton height={500} />
+        ) : (
+          <>
+            <div
+              className="hero-section"
+              style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+              }}
+            >
+              {/* Hero content */}
             </div>
-          </div>
-        </div>
-
-        {/* Cast Section */}
-        <section className="cast-section container">
-          <h2>Cast</h2>
-          <div className="cast-grid">
-            {cast.map((member) => (
-              <div key={member.id} className="cast-member">
-                <img
-                  src={
-                    member.profile_path
-                      ? `https://image.tmdb.org/t/p/w185${member.profile_path}`
-                      : "/placeholder-profile.jpg"
-                  }
-                  alt={member.name}
-                />
-                <div className="cast-info">
-                  <h4>{member.name}</h4>
-                  <p>{member.character}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <Link to={`/movie/${movie.id}`}>
-          {/* Similar Movies Section */}
-          <section className="similar-movies container">
-            <h2>Similar Movies</h2>
-            <div className="similar-movies-grid">
-              {similarMovies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
-            </div>
-          </section>
-        </Link>
+            <CastList cast={cast} />
+            <SimilarMovies movies={similar} />
+          </>
+        )}
       </div>
-      <Footer />
-    </>
+    </ErrorBoundary>
   );
-}
-
-MovieDetailsPage.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }),
-  }),
 };
+
+export default MovieDetailsPage;
