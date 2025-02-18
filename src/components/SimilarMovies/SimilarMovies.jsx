@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import MovieCard from "./MovieCard";
+import MovieCard from "../MovieCard/MovieCard";
 
 export default function SimilarMovies({ movies }) {
   return (
@@ -18,4 +18,4 @@ export default function SimilarMovies({ movies }) {
 
 SimilarMovies.propTypes = {
   movies: PropTypes.object,
-}
+};

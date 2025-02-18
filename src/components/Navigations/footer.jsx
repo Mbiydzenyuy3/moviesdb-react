@@ -1,4 +1,4 @@
-import Logo from "./logo";
+import Logo from "../logo";
 
 export default function Footer() {
   return (
@@ -53,7 +53,7 @@ export default function Footer() {
               <div className="footer-item footer-images">
                 <h4 className="footer-heading">Download Our App</h4>
                 <div className="footer-images-item">
-                  <img src="public/assets/img/apple.png" alt="" />
+                  <img src="/assets/img/apple.png" alt="" />
                   <img src="/assets/img/playstore.png" alt="" />
                 </div>
               </div>

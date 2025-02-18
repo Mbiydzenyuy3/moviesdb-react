@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import MovieCard from "./MovieCard";
+import MovieCard from "../MovieCard/MovieCard";
 import PropTypes from "prop-types";
 
 export default function MovieSection({ title, movies }) {
@@ -18,19 +18,23 @@ export default function MovieSection({ title, movies }) {
 
   return (
     <section className="movie-section">
-      <h2 className="section-title">{title}</h2>
-      <Slider {...settings}>
-        {movies.map((movie) => (
-          <div key={movie.id}>
-            <MovieCard movie={movie} />
-          </div>
-        ))}
-      </Slider>
+      <div className="container">
+        <div className="movie-section-items">
+          <h2 className="section-title">{title}</h2>
+          <Slider {...settings}>
+            {movies.map((movie) => (
+              <div key={movie.id}>
+                <MovieCard movie={movie} />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
     </section>
   );
 }
 
 MovieSection.propTypes = {
   title: PropTypes.string,
-  movies: PropTypes.object,
+  movies: PropTypes.obj,
 };

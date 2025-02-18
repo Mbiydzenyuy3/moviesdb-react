@@ -1,7 +1,7 @@
 // src/components/Header.js
-import { useNavigate } from "react-router-dom";
-import SearchBar from "./SearchBar";
-import Logo from "./logo";
+import { Link, useNavigate } from "react-router-dom";
+import SearchBar from "../SearchForm/SearchBar";
+import Logo from "../logo";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -18,34 +18,26 @@ export default function Header() {
           <nav className="navbar">
             <ul>
               <li>
-                <a href="">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="/movie-details.html">Movies</a>
+                <Link to="/movie-details/:id">Movies</Link>
               </li>
               <li>
-                <a href="/movie-details.html">Series</a>
+                <Link to="/movie-details.html">Series</Link>
               </li>
               <li>
-                <a href="/movie-details.html">Trending</a>
+                <Link to="/movie-details.html">Trending</Link>
               </li>
               <li>
-                <a href="/movie-details.html">Categories</a>
+                <Link to="/movie-details.html">Categories</Link>
               </li>
             </ul>
           </nav>
           <div className="search-bar">
-            <form className="search-form">
-              <SearchBar />
-              <button
-                onClick={handleSearch()}
-                type="button"
-                className="search-icon"
-                id="searchButton"
-              >
-                <img src="/assets/img/search-icon.svg" alt="" />
-              </button>
-            </form>
+            <div className="search-form">
+              <SearchBar onclick={handleSearch} />
+            </div>
           </div>
           <div className="profile">
             <img src="/assets/img/profile.png" alt="" />
