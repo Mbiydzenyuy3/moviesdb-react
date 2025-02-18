@@ -8,12 +8,13 @@ import Footer from "../components/Navigations/footer";
 import Header from "../components/Navigations/header";
 
 export default function HomePage() {
+  
   return (
     <div className="home-page">
       <Header />
       <HeroSection />
       <LatestMovies />
-      <div className="container">
+      <div className="movies">
         <TopSearchesMovies />
         <ActionMovies />
         <RomanceDramaMovies />

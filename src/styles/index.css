@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  width: 1300px;
+  width: 1312px;
   display: flex;
   align-items: center;
   margin: auto;
@@ -29,6 +29,8 @@ header {
 .header {
   height: 64px;
   justify-content: space-between;
+  width: 1312px;
+  margin: auto;
 }
 
 .header ul {
@@ -68,8 +70,30 @@ a:hover {
   color: #ffa500;
 }
 
-h2.section-title {
+h2.section-title,
+h3 {
   color: #fff;
+}
+
+.more-movies {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 1312px;
+  height: 1050px;
+  margin: auto;
+  top: 942px;
+  left: 49px;
+  gap: 50px;
+}
+
+.action-movies,
+.romance-movies,
+.comedy-movies {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+  margin-top: 100px;
 }
 
 
@@ -100,6 +124,7 @@ footer {
 
 .footer {
   width: 100%;
+  margin-top: 400px;
 }
 
 .footer-main-items {

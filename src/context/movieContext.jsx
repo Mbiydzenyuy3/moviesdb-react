@@ -1,3 +1,4 @@
+// movieContext.jsx
 import PropTypes from "prop-types";
 import { createContext, useState, useEffect, useContext } from "react";
 
@@ -6,7 +7,7 @@ export const useMovieContext = () => useContext(MovieContext);
 
 export default function MovieProvider({ children }) {
   const [latestMovies, setLatestMovies] = useState([]);
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]); // Top Searches/Likes?
   const [actionMovies, setActionMovies] = useState([]);
   const [romanceDramaMovies, setRomanceDramaMovies] = useState([]);
   const [comedyMovies, setComedyMovies] = useState([]);
@@ -34,11 +35,16 @@ export default function MovieProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchMovies(API_URLS.latestReleases, setLatestMovies);
-    fetchMovies(API_URLS.topRated, setTopRatedMovies);
-    fetchMovies(API_URLS.action, setActionMovies);
-    fetchMovies(API_URLS.romanceDrama, setRomanceDramaMovies);
-    fetchMovies(API_URLS.comedy, setComedyMovies);
+    if (API_KEY) {
+      // Only fetch if API_KEY is available
+      fetchMovies(API_URLS.latestReleases, setLatestMovies);
+      fetchMovies(API_URLS.topRated, setTopRatedMovies);
+      fetchMovies(API_URLS.action, setActionMovies);
+      fetchMovies(API_URLS.romanceDrama, setRomanceDramaMovies);
+      fetchMovies(API_URLS.comedy, setComedyMovies);
+    } else {
+      console.warn("verify if your api key is correct");
+    }
   }, []);
 
   const value = {
@@ -63,5 +69,5 @@ export const useMovies = () => {
 };
 
 MovieProvider.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.node, // Corrected proptype
 };

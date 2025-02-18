@@ -1,4 +1,43 @@
 .latestMovie {
+  width: 1312px;
   margin-top: -155px;
   margin-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+}
+
+.latestMovie div {
+  color: #fff;
+  position: relative;
+  width: 281px;
+  height: 298px;
+  gap: 10px;
+  text-align: center;
+  align-content: center;
+}
+
+.latestMovie span {
+  width: 250px;
+  height: 298px;
+  left: 843px;
+  font-family: SF Compact;
+  font-weight: 1000;
+  font-size: 250px;
+  line-height: 298.34px;
+  letter-spacing: 0%;
+  text-align: center;
+  backdrop-filter: blur(40px)
+}
+
+.latestMovie img {
+  width: 138px;
+  height: 178px;
+  top: 92px;
+  left: 143px;
+  border-radius: 12px;
+  border-width: 1px;
+  position: absolute;
+  top: 28%;
+  left: 155px;
 }

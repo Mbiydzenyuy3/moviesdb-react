@@ -1,38 +1,45 @@
-import PropTypes from "prop-types";
+// SearchBar.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { searchMovies } from "../../services/api-services";
+
 export default function SearchBar() {
   const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validate query before navigation
-    if (query.trim()) {
-      navigate(`/search?query=${encodeURIComponent(query.trim())}`);
-    } else {
-      // Handle empty search (optional)
-      alert("Please enter a search term");
+  const handleSearch = async (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    if (value.length > 2) {
+      const results = await searchMovies(value);
+      setSuggestions(results.results || []);
     }
   };
 
+  const handleSuggestionClick = (movieId) => {
+    navigate(`/movie/${movieId}`);
+    setQuery("");
+    setSuggestions([]);
+  };
+
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
+    <div>
       <input
-        id="search-input"
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleSearch}
         placeholder="Search movies..."
       />
-      <button type="submit" className="search-btn" id="searchButton">
-        <img src="/assets/img/search-icon.svg" alt="" />
-      </button>
-    </form>
+      {suggestions.length > 0 && (
+        <div className="suggestions">
+          {suggestions.map((movie) => (
+            <div key={movie.id} onClick={() => handleSuggestionClick(movie.id)}>
+              {movie.title}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
-
-SearchBar.propTypes = {
-  debounceTime: PropTypes.number,
-};

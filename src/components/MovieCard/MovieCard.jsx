@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import styles from "../MovieCard/MovieCard.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieCard({ movie }) {
+  const navigate = useNavigate();
   return (
-    <Link to={`/movie/${movie.id}`} className="movie-card">
+    <div
+      onClick={() => navigate(`/movie/${movie.id}`)}
+      className={styles.movieCard}
+    >
       <img
         src={
           movie.poster_path
@@ -20,7 +25,7 @@ export default function MovieCard({ movie }) {
           <span>{new Date(movie.release_date).getFullYear()}</span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
