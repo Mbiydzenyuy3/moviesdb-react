@@ -7,8 +7,15 @@ export default function HeroSection() {
         <div className={styles.hero}>
           <div className={styles.overlay}> </div>
           <div className={styles.heroImage}>
-            <img src="/assets/img/Spiderman.png" alt="spiderman" />
+          <img src="/assets/img/Spiderman.png" alt="spiderman" />
           </div>
+          {/* 
+          <div className={styles.movie} key={movie.id}>
+            <Link to={`/movie/${movie.id}`} className={styles.heroSectionCard}>
+              <img src={movie} alt={movie.title} className={styles.posterImg} />
+            </Link>
+          </div> */}
+
           <div className={styles.heroMovieDetails}>
             <span className={styles.productionCompany}>CBFC:U/A</span>
             <span className={styles.action}>Action</span> .

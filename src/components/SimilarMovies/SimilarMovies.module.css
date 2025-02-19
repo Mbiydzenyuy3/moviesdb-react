@@ -1,0 +1,12 @@
+.similarMovies {
+  width: 1280px;
+  margin: 150px auto;
+}
+
+.similarFlex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 84px;
+
+}

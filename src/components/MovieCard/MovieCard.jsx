@@ -20,6 +20,7 @@ export default function MovieCard({ movie }) {
       />
       <div className="movie-info">
         <h3>{movie.title}</h3>
+        <p>{movie.overwiew}</p>
         <div className="movie-meta">
           <span>⭐ {movie.vote_average.toFixed(1)}</span>
           <span>{new Date(movie.release_date).getFullYear()}</span>
@@ -36,5 +37,6 @@ MovieCard.propTypes = {
     poster_path: PropTypes.string,
     vote_average: PropTypes.number,
     release_date: PropTypes.string,
+    overwiew: PropTypes.string,
   }).isRequired,
 };

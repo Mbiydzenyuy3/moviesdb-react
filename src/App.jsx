@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import ErrorBoundary from "./components/ErrorCatch/ErrorBoundary";
-import MovieProvider from "./context/movieContext";
+import { MovieProvider } from "./context/movieContext";
 import HomePage from "./pages/Home";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
 

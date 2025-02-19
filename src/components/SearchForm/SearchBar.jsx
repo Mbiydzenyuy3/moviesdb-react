@@ -1,4 +1,4 @@
-// SearchBar.jsx
+import styles from "../SearchForm/Search.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchMovies } from "../../services/api-services";
@@ -24,7 +24,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div>
+    <div className={styles.input}>
       <input
         type="text"
         value={query}
@@ -40,6 +40,19 @@ export default function SearchBar() {
           ))}
         </div>
       )}
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#fff"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+      </div>
     </div>
   );
 }

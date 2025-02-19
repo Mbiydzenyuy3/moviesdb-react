@@ -41,3 +41,12 @@
   top: 28%;
   left: 155px;
 }
+
+.heroSectionBg {
+  display: flex;
+  width: 100%;
+}
+
+.heroSectionBg img {
+  width: 100%;
+}

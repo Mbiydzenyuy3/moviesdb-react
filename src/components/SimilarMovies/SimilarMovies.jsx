@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
 import MovieCard from "../MovieCard/MovieCard";
+import useMovies from "../../hook/moviesFetch";
+import styles from "../SimilarMovies/SimilarMovies.module.css";
 
-export default function SimilarMovies({ movies }) {
+export default function SimilarMovies() {
+  const { similarMovies } = useMovies();
   return (
-    <section className="similar-movies">
+    <section className={styles.similarMovies}>
       <div className="container">
         <h2>Similar Movies</h2>
-        <div className="similar-grid">
-          {movies.map((movie) => (
+        <div className={styles.similarFlex}>
+          {similarMovies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
