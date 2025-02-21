@@ -36,12 +36,14 @@ export default function MovieDetailsPage() {
   return (
     <div className="movie-details-page">
       <Header />
-      <h1>{movie.title}</h1>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title}
-      />
-      <p>{movie.overview}</p>
+      <div className="movie-hero-display">
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={movie.title}
+        />
+        <h1 className="movie-hero-title">{movie.title}</h1>
+        <p className="movie-overview-p">{movie.overview}</p>
+      </div>
       <MovieCast cast={cast} />
       <SimilarMovies movies={similarMovies} />
       <Footer />

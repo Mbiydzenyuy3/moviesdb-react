@@ -98,6 +98,29 @@ h3 {
   margin-top: 100px;
 }
 
+.movie-overview-p,
+.movie-hero-title {
+  color: #fff;
+  width: 550px;
+  text-align: center;
+}
+
+.movie-hero-display {
+  width: 1280px;
+  margin: auto;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.movie-hero-display img {
+  object-fit: cover;
+  width: 1280px;
+  height: 450px;
+}
 
 .movie-section-items {
   display: flex;

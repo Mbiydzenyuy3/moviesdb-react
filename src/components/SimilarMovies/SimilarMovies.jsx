@@ -2,20 +2,27 @@ import PropTypes from "prop-types";
 import MovieCard from "../MovieCard/MovieCard";
 import useMovies from "../../hook/moviesFetch";
 import styles from "../SimilarMovies/SimilarMovies.module.css";
+import { useNavigate } from "react-router-dom";
 
-export default function SimilarMovies() {
+export default function SimilarMovies(movie) {
   const { similarMovies } = useMovies();
+  const navigate = useNavigate();
   return (
-    <section className={styles.similarMovies}>
-      <div className="container">
-        <h2>Similar Movies</h2>
-        <div className={styles.similarFlex}>
-          {similarMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
+    <div
+      onClick={() => navigate(`/movie/${movie.id}`)}
+      className={styles.movieCard}
+    >
+      <section className={styles.similarMovies}>
+        <div className="container">
+          <h2>Similar Movies</h2>
+          <div className={styles.similarFlex}>
+            {similarMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 

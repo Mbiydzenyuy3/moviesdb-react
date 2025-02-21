@@ -9,11 +9,12 @@ export default function SearchBar() {
   const navigate = useNavigate();
 
   const handleSearch = async (e) => {
-    const value = e.target.value;
-    setQuery(value);
-    if (value.length > 2) {
-      const results = await searchMovies(value);
-      setSuggestions(results.results || []);
+    const searchValue = e.target.value;
+    setQuery(searchValue);
+    if (searchValue.length > 2) {
+      const data = await searchMovies(searchValue);
+      console.log(data);
+      setSuggestions(data.results || []);
     }
   };
 
@@ -34,8 +35,12 @@ export default function SearchBar() {
       {suggestions.length > 0 && (
         <div className="suggestions">
           {suggestions.map((movie) => (
-            <div key={movie.id} onClick={() => handleSuggestionClick(movie.id)}>
-              {movie.title}
+            <div key={movie.id} className={styles.searchItem}>
+              <img
+                src={`${`https://image.tmdb.org/t/p/w200`}${movie.poster_path}`}
+                alt={movie.title}
+                onClick={() => handleSuggestionClick(movie.id)}
+              />
             </div>
           ))}
         </div>

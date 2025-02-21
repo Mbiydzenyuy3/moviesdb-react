@@ -8,7 +8,6 @@ import Footer from "../components/Navigations/footer";
 import Header from "../components/Navigations/header";
 
 export default function HomePage() {
-  
   return (
     <div className="home-page">
       <Header />
