@@ -7,12 +7,14 @@
 
 .similarMoviesTitle {
   color: #fff;
+  padding: 16px 47px;
 }
 
 .similarMovies {
   display: grid;
   grid-template-columns: repeat(24, 350px);
   overflow-x: auto;
+  height: 350px;
   /* Enable scrolling */
   gap: 14px;
   padding: 16px 47px;

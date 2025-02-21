@@ -21,6 +21,7 @@ a.movieCard {
   display: grid;
   grid-template-columns: repeat(24, 300px);
   overflow-x: auto;
+  height: 350px;
   /* Enable scrolling */
   gap: 14px;
   padding: 16px 47px;
@@ -30,7 +31,6 @@ a.movieCard {
   animation-timing-function: cubic-bezier(0.37, 0.56, 1, 0.62);
   animation-duration: 1s;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 60px;
   /* Smooth scrolling for mobile */
 }
 

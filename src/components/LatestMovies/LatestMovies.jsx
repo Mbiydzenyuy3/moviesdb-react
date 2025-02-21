@@ -7,6 +7,7 @@ export default function LatestMovies() {
 
   return (
     <>
+      <h2 className={styles.latestHeading}>LATEST & TRENDING</h2>
       <div className={styles.latestMovie}>
         {latestMovies.map((movie, index) => (
           <div className={styles.movie} key={movie.id}>
@@ -21,13 +22,6 @@ export default function LatestMovies() {
                 alt={movie.title}
                 className={styles.posterImg}
               />
-              {/* <div className={styles.movieInfo}>
-                <h3>{movie.title}</h3>
-                <div className={styles.movieMeta}>
-                  <span>⭐ {movie.vote_average.toFixed(1)}</span>
-                  <span>{new Date(movie.release_date).getFullYear()}</span>
-                </div>
-              </div> */}
             </Link>
           </div>
         ))}
