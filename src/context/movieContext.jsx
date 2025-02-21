@@ -13,6 +13,7 @@ export const MovieProvider = ({ children }) => {
   const [romanceDramaMovies, setRomanceDramaMovies] = useState([]);
   const [comedyMovies, setComedyMovies] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
+  const [loading, setLoading] = useState([]);
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const API_URLS = {
@@ -23,6 +24,7 @@ export const MovieProvider = ({ children }) => {
     romanceDrama: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=10749,18&language=en-US&page=1`,
     comedy: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=35&language=en-US&page=1`,
     similarMovies: `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=28&language=en-US&page=1`,
+
   };
 
   const fetchMovies = async (apiUrl, setMovies) => {
@@ -48,6 +50,7 @@ export const MovieProvider = ({ children }) => {
       fetchMovies(API_URLS.romanceDrama, setRomanceDramaMovies);
       fetchMovies(API_URLS.comedy, setComedyMovies);
       fetchMovies(API_URLS.similarMovies, setSimilarMovies);
+      fetchMovies(API_URLS.loading, setLoading)
     } else {
       console.warn("verify if your api key is correct");
     }
@@ -61,6 +64,7 @@ export const MovieProvider = ({ children }) => {
     romanceDramaMovies,
     comedyMovies,
     similarMovies,
+    loading
   };
 
   return (

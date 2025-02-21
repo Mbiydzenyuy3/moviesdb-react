@@ -11,8 +11,7 @@
   animation-timing-function: cubic-bezier(0.37, 0.56, 1, 0.62);
   animation-duration: 1s;
   position: relative;
-  bottom: -330%;
-  margin-top: -170px;
+  margin-top: -245px;
   /* Smooth scrolling for mobile */
 }
 
@@ -23,20 +22,18 @@
 
 .latestMovie img {
   position: absolute;
-  margin-left: -58px;
+  margin-left: -50px;
+  margin-top: 100px;
+  width: 138px;
+  height: 178px;
+  border-radius: 12px;
+  border-width: 1px;
 }
 
 /* Custom Scrollbar */
 .latestMovie::-webkit-scrollbar {
   height: 8px;
   /* Thin scrollbar */
-}
-
-.latestMovie img {
-  width: 138px;
-  height: 178px;
-  border-radius: 12px;
-  border-width: 1px;
 }
 
 .latestMovie::-webkit-scrollbar-track {
