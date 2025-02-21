@@ -1,52 +1,89 @@
 .latestMovie {
-  width: 1312px;
-  margin-top: -155px;
-  margin-bottom: 80px;
   display: grid;
-  grid-template-columns: repeat(24, 1fr);
-  gap: 16px;
-}
-
-.latestMovie div {
-  color: #fff;
+  grid-template-columns: repeat(24, 300px);
+  overflow-x: auto;
+  /* Enable scrolling */
+  gap: 32px;
+  padding: 16px 47px;
+  margin-bottom: 40px;
+  scroll-behavior: smooth;
+  animation: scroll;
+  animation-timing-function: cubic-bezier(0.37, 0.56, 1, 0.62);
+  animation-duration: 1s;
+  -webkit-overflow-scrolling: touch;
   position: relative;
-  width: 281px;
-  height: 298px;
-  gap: 10px;
-  text-align: center;
-  align-content: center;
+  bottom: -330%;
+  /* Smooth scrolling for mobile */
 }
 
-.latestMovie span {
+.latestMovie img {
+  position: absolute;
+  margin-left: -58px;
+}
+
+/* Custom Scrollbar */
+.latestMovie::-webkit-scrollbar {
+  height: 8px;
+  /* Thin scrollbar */
+}
+
+.latestMovie img {
+  width: 138px;
+  height: 178px;
+  border-radius: 12px;
+  border-width: 1px;
+}
+
+.latestMovie::-webkit-scrollbar-track {
+  background: #f89706;
+  /* Light transparent background */
+  border-radius: 10px;
+}
+
+.latestMovie::-webkit-scrollbar-thumb {
+  background: #f89706;
+  /* Semi-transparent thumb */
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.latestMovie:hover::-webkit-scrollbar-thumb {
+  background: #fff;
+  /* Becomes more visible on hover */
+}
+
+/* Firefox scrollbar */
+.latestMovie {
+  scrollbar-width: none;
+  scrollbar-color: #f89706 rgba(255, 255, 255, 0.1);
+  transition: 0.6s ease-in;
+}
+
+.numbers {
   width: 250px;
   height: 298px;
-  left: 843px;
+  left: 281px;
   font-family: SF Compact;
   font-weight: 1000;
   font-size: 250px;
   line-height: 298.34px;
   letter-spacing: 0%;
   text-align: center;
-  backdrop-filter: blur(40px)
+  color: #fff;
 }
 
-.latestMovie img {
-  width: 138px;
-  height: 178px;
-  top: 92px;
-  left: 143px;
-  border-radius: 12px;
-  border-width: 1px;
-  position: absolute;
-  top: 28%;
-  left: 155px;
+.latestMovie:hover {
+  scrollbar-width: thin;
 }
 
-.heroSectionBg {
-  display: flex;
-  width: 100%;
-}
+@keyframes scroll {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 
-.heroSectionBg img {
-  width: 100%;
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

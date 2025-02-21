@@ -6,7 +6,6 @@
 
 body {
   background-color: #000;
-  overflow-x: hidden;
 }
 
 .container {
@@ -75,6 +74,10 @@ a:hover {
 h2.section-title,
 h3 {
   color: #fff;
+}
+
+.movies {
+  margin-top: 180px;
 }
 
 .more-movies {

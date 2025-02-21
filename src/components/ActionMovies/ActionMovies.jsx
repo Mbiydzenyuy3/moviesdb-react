@@ -1,15 +1,19 @@
 import useMovies from "../../hook/moviesFetch";
 import MovieCard from "../MovieCard/MovieCard";
+import styles from "../ActionMovies/ActionMovies.module.css";
 
 const ActionMovies = () => {
   const { actionMovies } = useMovies();
 
   return (
-    <div className="action-movies">
-      {actionMovies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </div>
+    <>
+      <h2 className={styles.actionTitle}>ACTION</h2>
+      <div className={styles.carouselCommon}>
+        {actionMovies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchMovies } from "../../services/api-services";
 
-export default function SearchBar() {
+export default function SearchBar(movie) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
@@ -18,12 +18,6 @@ export default function SearchBar() {
     }
   };
 
-  const handleSuggestionClick = (movieId) => {
-    navigate(`/movie/${movieId}`);
-    setQuery("");
-    setSuggestions([]);
-  };
-
   return (
     <div className={styles.input}>
       <input
@@ -33,13 +27,15 @@ export default function SearchBar() {
         placeholder="Search movies..."
       />
       {suggestions.length > 0 && (
-        <div className="suggestions">
+        <div
+          className="suggestions"
+          onClick={() => navigate(`/movie/${movie.id}`)}
+        >
           {suggestions.map((movie) => (
             <div key={movie.id} className={styles.searchItem}>
               <img
                 src={`${`https://image.tmdb.org/t/p/w200`}${movie.poster_path}`}
                 alt={movie.title}
-                onClick={() => handleSuggestionClick(movie.id)}
               />
             </div>
           ))}

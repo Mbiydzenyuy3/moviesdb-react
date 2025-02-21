@@ -12,10 +12,10 @@ export default function SimilarMovies(movie) {
       onClick={() => navigate(`/movie/${movie.id}`)}
       className={styles.movieCard}
     >
-      <section className={styles.similarMovies}>
+      <section className={styles.similarMoviesContainer}>
         <div className="container">
-          <h2>Similar Movies</h2>
-          <div className={styles.similarFlex}>
+          <h2 className={styles.similarMoviesTitle}>Similar Movies</h2>
+          <div className={styles.similarMovies}>
             {similarMovies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}

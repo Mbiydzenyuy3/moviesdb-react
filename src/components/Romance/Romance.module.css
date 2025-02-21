@@ -1,25 +1,5 @@
-.topRatedMoviesTitle {
-  color: #fff;
-}
-
-.topRatedMovies img {
-  width: 251px;
-  height: 251px;
-  border-radius: 12px;
-  border-width: 1px;
-}
-
-a.movieCard {
-  width: 251px;
-  height: 251px;
-  left: 1059px;
-  border-radius: 12px;
-  border-width: 1px;
-}
-
-.topRatedMovies {
-  display: grid;
-  grid-template-columns: repeat(24, 300px);
+.carouselCommon {
+  display: flex;
   overflow-x: auto;
   /* Enable scrolling */
   gap: 14px;
@@ -30,43 +10,46 @@ a.movieCard {
   animation-timing-function: cubic-bezier(0.37, 0.56, 1, 0.62);
   animation-duration: 1s;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 60px;
   /* Smooth scrolling for mobile */
 }
 
 /* Custom Scrollbar */
-.topRatedMovies::-webkit-scrollbar {
+.carouselCommon::-webkit-scrollbar {
   height: 8px;
   /* Thin scrollbar */
 }
 
-.topRatedMovies::-webkit-scrollbar-track {
+.carouselCommon::-webkit-scrollbar-track {
   background: #f89706;
   /* Light transparent background */
   border-radius: 10px;
 }
 
-.topRatedMovies::-webkit-scrollbar-thumb {
+.carouselCommon::-webkit-scrollbar-thumb {
   background: #f89706;
   /* Semi-transparent thumb */
   border-radius: 10px;
   transition: background 0.3s ease-in-out;
 }
 
-.topRatedMovies:hover::-webkit-scrollbar-thumb {
+.carouselCommon:hover::-webkit-scrollbar-thumb {
   background: #fff;
   /* Becomes more visible on hover */
 }
 
 /* Firefox scrollbar */
-.topRatedMovies {
+.carouselCommon {
   scrollbar-width: none;
   scrollbar-color: #f89706 rgba(255, 255, 255, 0.1);
   transition: 0.6s ease-in;
 }
 
-.topRatedMovies:hover {
+.carouselCommon:hover {
   scrollbar-width: thin;
+}
+
+.RomanceMoviesTitle {
+  color: #fff;
 }
 
 @keyframes scroll {

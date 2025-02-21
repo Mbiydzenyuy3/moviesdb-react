@@ -1,8 +1,8 @@
-.topRatedMoviesTitle {
+.ComedyMoviesTitle {
   color: #fff;
 }
 
-.topRatedMovies img {
+.ComedyMovies img {
   width: 251px;
   height: 251px;
   border-radius: 12px;
@@ -17,7 +17,7 @@ a.movieCard {
   border-width: 1px;
 }
 
-.topRatedMovies {
+.ComedyMovies {
   display: grid;
   grid-template-columns: repeat(24, 300px);
   overflow-x: auto;
@@ -35,37 +35,37 @@ a.movieCard {
 }
 
 /* Custom Scrollbar */
-.topRatedMovies::-webkit-scrollbar {
+.ComedyMovies::-webkit-scrollbar {
   height: 8px;
   /* Thin scrollbar */
 }
 
-.topRatedMovies::-webkit-scrollbar-track {
+.ComedyMovies::-webkit-scrollbar-track {
   background: #f89706;
   /* Light transparent background */
   border-radius: 10px;
 }
 
-.topRatedMovies::-webkit-scrollbar-thumb {
+.ComedyMovies::-webkit-scrollbar-thumb {
   background: #f89706;
   /* Semi-transparent thumb */
   border-radius: 10px;
   transition: background 0.3s ease-in-out;
 }
 
-.topRatedMovies:hover::-webkit-scrollbar-thumb {
+.ComedyMovies:hover::-webkit-scrollbar-thumb {
   background: #fff;
   /* Becomes more visible on hover */
 }
 
 /* Firefox scrollbar */
-.topRatedMovies {
+.ComedyMovies {
   scrollbar-width: none;
   scrollbar-color: #f89706 rgba(255, 255, 255, 0.1);
   transition: 0.6s ease-in;
 }
 
-.topRatedMovies:hover {
+.ComedyMovies:hover {
   scrollbar-width: thin;
 }
 

@@ -22,7 +22,7 @@ export default function MovieDetailsPage() {
       setMovie(movieData);
 
       const creditsData = await fetchCredits(id);
-      setCast(creditsData.cast.slice(0, 10)); // Top 10 cast members
+      setCast(creditsData.cast.slice(0, 7)); // Top 10 cast members
 
       const similarMoviesData = await fetchSimilarMovies(id);
       setSimilarMovies(similarMoviesData.results.slice(0, 4)); // Top 5 similar movies

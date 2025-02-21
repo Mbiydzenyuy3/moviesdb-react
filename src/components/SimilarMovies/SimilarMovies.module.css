@@ -1,12 +1,77 @@
-.similarMovies {
-  width: 1280px;
-  margin: 150px auto;
+.similarMoviesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 80px;
 }
 
-.similarFlex {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 84px;
+.similarMoviesTitle {
+  color: #fff;
+}
 
+.similarMovies {
+  display: grid;
+  grid-template-columns: repeat(24, 350px);
+  overflow-x: auto;
+  /* Enable scrolling */
+  gap: 14px;
+  padding: 16px 47px;
+  margin-bottom: 50px;
+  scroll-behavior: smooth;
+  animation: scroll;
+  animation-timing-function: cubic-bezier(0.37, 0.56, 1, 0.62);
+  animation-duration: 1s;
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling for mobile */
+}
+
+/* Custom Scrollbar */
+.similarMovies::-webkit-scrollbar {
+  height: 8px;
+  /* Thin scrollbar */
+}
+
+.similarMovies::-webkit-scrollbar-track {
+  background: #f89706;
+  /* Light transparent background */
+  border-radius: 10px;
+}
+
+.similarMovies::-webkit-scrollbar-thumb {
+  background: #f89706;
+  /* Semi-transparent thumb */
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.similarMovies:hover::-webkit-scrollbar-thumb {
+  background: #fff;
+  /* Becomes more visible on hover */
+}
+
+/* Firefox scrollbar */
+.similarMovies {
+  scrollbar-width: none;
+  scrollbar-color: #f89706 rgba(255, 255, 255, 0.1);
+  transition: 0.6s ease-in;
+}
+
+.similarMovies:hover {
+  scrollbar-width: thin;
+}
+
+.RomanceMoviesTitle {
+  color: #fff;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
