@@ -18,6 +18,12 @@ export default function SearchBar(movie) {
     }
   };
 
+  const handleSuggestionClick = (movieId) => {
+    navigate(`/movie/${movieId}`);
+    setQuery("");
+    setSuggestions([]);
+  };
+
   return (
     <div className={styles.input}>
       <input
@@ -36,6 +42,7 @@ export default function SearchBar(movie) {
               <img
                 src={`${`https://image.tmdb.org/t/p/w200`}${movie.poster_path}`}
                 alt={movie.title}
+                onClick={() => handleSuggestionClick(movie.id)}
               />
             </div>
           ))}
