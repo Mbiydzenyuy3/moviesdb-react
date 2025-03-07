@@ -18,7 +18,6 @@ export default function RomanceDramaMovies() {
     <>
       <h2 className={styles.RomanceMoviesTitle}>ROMANCE</h2>
       <div className={styles.carouselCommon}>
-        <div className="spinner"></div>
         {romanceDramaMovies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
