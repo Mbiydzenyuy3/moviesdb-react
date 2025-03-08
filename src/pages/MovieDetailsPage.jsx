@@ -14,6 +14,7 @@ export default function MovieDetailsPage() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [cast, setCast] = useState([]);
+  const[loading, setLoading]=useState(null)
   const [similarMovies, setSimilarMovies] = useState([]);
 
   useEffect(() => {
@@ -41,8 +42,10 @@ export default function MovieDetailsPage() {
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
         />
-        <h1 className="movie-hero-title">{movie.title}</h1>
-        <p className="movie-overview-p">{movie.overview}</p>
+        <div className="movie-infos">
+          <h1 className="movie-hero-title">{movie.title}</h1>
+          <p className="movie-overview-p">{movie.overview}</p>
+        </div>
       </div>
       <MovieCast cast={cast} />
       <SimilarMovies movies={similarMovies} />
