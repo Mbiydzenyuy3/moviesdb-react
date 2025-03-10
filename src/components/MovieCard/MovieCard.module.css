@@ -1,0 +1,13 @@
+.movieCard {
+  width: 251px;
+  height: 251px;
+  border-radius: 12px;
+  border-width: 1px;
+}
+
+.movieCard img {
+  width: 251px;
+  height: 251px;
+  border-radius: 12px;
+  border-width: 1px;
+}
