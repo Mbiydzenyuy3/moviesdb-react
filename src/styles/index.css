@@ -131,7 +131,7 @@ h3 {
 }
 
 .movies {
-  padding: 16px 47px;
+  padding: 16px;
 }
 
 .movie-section-items {
@@ -162,13 +162,13 @@ footer {
 .footer {
   width: 100%;
   margin-top: 80px;
+  padding: 16px;
 }
 
 .footer-main-items {
   display: flex;
-  justify-content: space-between;
-  gap: 64px;
-  margin-bottom: 60px;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .footer-heading {
@@ -197,6 +197,7 @@ footer {
 }
 
 .footer-rounded-tick {
+  width: 164px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,13 +239,18 @@ ul.footer-ul {
 .footer-social-media-icons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   gap: 16px;
 }
 
 .footer-images-item {
   display: flex;
   flex-direction: column;
+}
+
+.google,
+.apple {
+  width: 124px;
 }
 
 .footer-contact {
@@ -259,4 +265,18 @@ ul.footer-ul {
   display: flex;
   align-items: center;
   gap: 32px;
+}
+
+@media(min-width: 768px) {}
+
+@media(min-width: 1024px) {}
+
+@media(min-width: 1200px) {
+  .footer-main-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 64px;
+    margin-bottom: 60px;
+  }
 }

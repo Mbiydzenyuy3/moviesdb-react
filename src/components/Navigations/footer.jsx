@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <>
       <footer>
-        <div className="container">
+        <div className="footer-container">
           <div className="footer">
             <div className="footer-main-items">
               <div className="footer-item company">
@@ -53,8 +53,16 @@ export default function Footer() {
               <div className="footer-item footer-images">
                 <h4 className="footer-heading">Download Our App</h4>
                 <div className="footer-images-item">
-                  <img src="/assets/img/apple.png" alt="" />
-                  <img src="/assets/img/playstore.png" alt="" />
+                  <img
+                    className="apple"
+                    src="/assets/img/apple.png"
+                    alt="apple icon"
+                  />
+                  <img
+                    className="google"
+                    src="/assets/img/playstore.png"
+                    alt="google icon"
+                  />
                 </div>
               </div>
             </div>
