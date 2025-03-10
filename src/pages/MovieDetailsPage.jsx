@@ -14,7 +14,6 @@ export default function MovieDetailsPage() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [cast, setCast] = useState([]);
-  const[loading, setLoading]=useState(null)
   const [similarMovies, setSimilarMovies] = useState([]);
 
   useEffect(() => {
@@ -23,10 +22,10 @@ export default function MovieDetailsPage() {
       setMovie(movieData);
 
       const creditsData = await fetchCredits(id);
-      setCast(creditsData.cast.slice(0, 7)); // Top 10 cast members
+      setCast(creditsData.cast.slice(0, 7)); // Top 7 cast members
 
       const similarMoviesData = await fetchSimilarMovies(id);
-      setSimilarMovies(similarMoviesData.results.slice(0, 4)); // Top 5 similar movies
+      setSimilarMovies(similarMoviesData.results.slice(0, 4)); // Top 4 similar movies
     };
 
     fetchData();
